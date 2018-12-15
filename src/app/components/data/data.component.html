@@ -1,0 +1,65 @@
+<h4>Formularios <small>data</small></h4>
+<hr>
+<form [formGroup]="forma" (ngSubmit)="guardar()">
+
+  <div formGroupName="nombreCompleto">
+
+    <div class="form-group row" [ngClass]="{'was-validated': forma.get('nombre').valid }">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"[ngClass]="{'is-invalid': forma.get('nombre').touched }"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre">
+
+        <div class="invalid-feedback" *ngIf="forma.controls['nombre'].errors?.required">
+          El nombre es necesario
+        </div>
+        <div class="invalid-feedback" *ngIf="forma.controls['nombre'].errors?.minlength">
+         Por lo menos tres caracteres
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row" [ngClass]="{'was-validated': forma.get('apellido').valid }">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="apellido">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row" [ngClass]="{'was-validated': forma.get('correo').valid }">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control "[ngClass]="{'is-invalid': forma.get('correo').touched }"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo">
+             <div class="invalid-feedback" *ngIf="forma.controls['correo'].invalid">
+               Formato incorrecto
+             </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+      {{forma.valid}}
+    </div>
+  </div>
+
+</form>
