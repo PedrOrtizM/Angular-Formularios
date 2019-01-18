@@ -4,25 +4,24 @@
 
   <div formGroupName="nombreCompleto">
 
-    <div class="form-group row" [ngClass]="{'was-validated': forma.get('nombre') }">
+    <div class="form-group row" >
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
 
-        <input class="form-control"[ngClass]="{'is-invalid': forma.get('nombre').touched }"
+        <input class="form-control"
                type="text"
                placeholder="Nombre"
                formControlName="nombre">
-
-        <div class="invalid-feedback" *ngIf="forma.controls['nombre'].errors?.required">
+        <div  *ngIf="forma.get('nombreCompleto.nombre').errors?.required">
           El nombre es necesario
         </div>
-        <div class="invalid-feedback" *ngIf="forma.controls['nombre'].errors?.minlength">
+        <div *ngIf="forma.get('nombreCompleto.nombre').errors?.minlength">
          Por lo menos tres caracteres
         </div>
       </div>
     </div>
 
-    <div class="form-group row" [ngClass]="{'was-validated': forma.get('apellido').valid }">
+    <div class="form-group row" >
       <label class="col-2 col-form-label">Apellido</label>
       <div class="col-8">
 
@@ -35,16 +34,16 @@
 
   </div>
 
-  <div class="form-group row" [ngClass]="{'was-validated': forma.get('correo').valid }">
+  <div class="form-group row">
     <label class="col-2 col-form-label">Correo</label>
     <div class="col-md-8">
 
-      <input class="form-control "[ngClass]="{'is-invalid': forma.get('correo').touched }"
+      <input class="form-control"
              type="email"
              placeholder="Correo electrónico"
              formControlName="correo">
-             <div class="invalid-feedback" *ngIf="forma.controls['correo'].invalid">
-               Formato incorrecto
+             <div class="invalid-feedback" >
+              Formato incorrecto
              </div>
     </div>
 
@@ -63,3 +62,14 @@
   </div>
 
 </form>
+
+
+<!-- [ngClass]="{'was-validated': forma.get('nombre') }"
+[ngClass]="{'is-invalid': forma.get('nombre').touched }"
+[ngClass]="{'was-validated': forma.get('apellido').valid }"
+[ngClass]="{'was-validated': forma.get('correo').valid }
+[ngClass]="{'is-invalid': forma.get('correo').touched } -->
+<!-- *ngIf="forma.controls['nombre'].errors?.required"
+*ngIf="forma.controls['nombre'].errors?.minlength
+*ngIf="forma.controls['correo'].invalid">
+       -->
